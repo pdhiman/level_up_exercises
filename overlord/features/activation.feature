@@ -1,31 +1,27 @@
+#introduce tags
+#run feature by line #
+
+#cucumber --tags @activating-bomb           # Runs both scenarios
+#cucumber --tags @deactivating-bomb         # Runs the first scenario
+#cucumber --tags ~@deactivating-bomb        # Runs the second scenario (Scenarios without @important)
+#cucumber features/activation.feature:17
 Feature: Activation
   As a super-villain
   I want to activate a bomb
-  In order to blow stuff up
+  So that I blow stuff up
 
   Background: A bomb has been booted
-    Given I have booted a bomb with the default codes
+    Given a bomb booted with the default codes
 
-  @javascript
+  @javascript @activating-bomb
   Scenario: Entering activation code and receiving prompt
     When I enter the code 1234
-    Then I should see the time prompt
-
-  @javascript
-  Scenario: Setting the timer
-    When I enter the code 1234
-    And I enter the time 0400
+      And I should see the time prompt
+      And I enter the time 0400
     Then the bomb should be activated
 
-  @javascript
-  Scenario: Cancelling the activation
-    When I enter the code 1234
-    And I enter a blank time
-    Then the bomb should be deactivated
-
-  @javascript
-  Scenario: Entering activation code while bomb is active
-    Given the code 1234 was entered
-    And the time 0400 was entered
+  @javascript @reactivating-bomb
+  Scenario: entering activation code while bomb is active
+    Given the bomb is already activated
     When I enter the code 1234
     Then I should see the message "INVALID CODE"

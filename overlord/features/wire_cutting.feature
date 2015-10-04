@@ -4,7 +4,7 @@ Feature: Wire-cutting
   In order to disarm the bomb
 
   Background: A bomb has been booted
-    Given I have booted a bomb with the default codes
+    Given a bomb booted with the default codes
 
   @javascript
   Scenario: Cutting disarm wires
@@ -13,8 +13,7 @@ Feature: Wire-cutting
 
   @javascript
   Scenario: Cutting an exploding wire
-    Given the code 1234 was entered
-    And the time 0400 was entered
+    Given the bomb is already activated
     When I cut an exploding wire
     Then the bomb should explode
 

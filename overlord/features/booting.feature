@@ -24,10 +24,10 @@ Feature: Booting the bomb
 
   Scenario: Booting without codes
     When I boot my bomb
-    Then my bomb should be inactive
+    Then the bomb should be "INACTIVE"
 
   Scenario: Booting with codes
     Given I set my activation code to 3490
     And I set my deactivation code to 1212
     When I boot my bomb
-    Then my bomb should be inactive
+    Then the bomb should be "INACTIVE"

@@ -1,24 +1,25 @@
+#@javascript: Uses a javascript-aware system to process web requests (e.g., Selenium) instead of the default (non-javascript-aware) webrat browser.
+
 Feature: Deactivation
   As a super-villain, hero, officer, bystander, or interested party
   I want to deactivate the bomb
-  In order to survive
+  So that I survive & dont die
 
   Background:
-    Given the bomb is booted with default codes
-    And the code 1234 was entered
-    And the time 0400 was entered
+    Given a bomb booted with the default codes
+      And the bomb is already activated
 
-  @javascript
+  @javascript @deactivating-with-valid-code
   Scenario: Deactivating a bomb with a valid code
     When I enter the code 0000
-    Then the bomb should be inactive
+    Then the bomb should be "INACTIVE"
 
-  @javascript
+  @javascript @deactivating-with-invalid-code
   Scenario: Deactivating the bomb with an invalid code
     When I enter the code 5678
     Then I should see the message "INVALID CODE"
 
-  @javascript
+  @javascript @bomb-explosion
   Scenario: Deactivating the bomb with an invalid code and 1 remaining attempt
     Given 2 failed attempts have been made to disarm the bomb
     When I enter the code 5678
