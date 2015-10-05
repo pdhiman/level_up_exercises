@@ -18,5 +18,5 @@ end
 
 Given /^I set my deactivation code to (\d+)$/ do |code|
   #After we finishd  writing step def above, what do you think this should be?
-  pending #its pending. Yes, you can use that. 
+  pending #Lets try
 end

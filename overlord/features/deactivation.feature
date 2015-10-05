@@ -7,22 +7,13 @@ Feature: Deactivation
 
 #bomb booted & activated can be written as part of the background
   Background:
-    Given
-      And
 
 #Hint hint: there are 3 scenarios. Let's think.
   @javascript 
   Scenario:
-    When
-    Then
 
   @javascript
   Scenario:
-    When 
-    Then
 
   @javascript
-  Scenario: 
-    Given
-    When
-    Then
+  Scenario:
